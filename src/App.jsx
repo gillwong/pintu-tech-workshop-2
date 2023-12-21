@@ -1,71 +1,62 @@
-// List of items
-const items = [
-  {
-    name: "Handphone 1",
-    price: 399,
-    image: "images/img1.png",
-    category: "Electronics",
-  },
-  {
-    name: "Handphone 2",
-    price: 459,
-    image: "images/img2.png",
-    category: "Electronics",
-  },
-  {
-    name: "Handphone 3",
-    price: 249,
-    image: "images/img3.png",
-    category: "Electronics",
-  },
-  {
-    name: "Handphone 4",
-    price: 379,
-    image: "images/img4.png",
-    category: "Electronics",
-  },
-  {
-    name: "Handphone 5",
-    price: 799,
-    image: "images/img5.png",
-    category: "Electronics",
-  },
-  {
-    name: "Sepatu 1",
-    price: 99,
-    image: "images/img6.png",
-    category: "Clothes",
-  },
-  {
-    name: "Sepatu 2",
-    price: 89,
-    image: "images/img7.png",
-    category: "Clothes",
-  },
-  {
-    name: "Sepatu 3",
-    price: 129,
-    image: "images/img8.png",
-    category: "Clothes",
-  },
-  {
-    name: "Sepatu 4",
-    price: 79,
-    image: "images/img9.png",
-    category: "Clothes",
-  },
-  {
-    name: "Sepatu 5",
-    price: 99,
-    image: "images/img10.png",
-    category: "Clothes",
-  },
-];
-// Jangan Edit Code di Bagian Atas Ini
-// Tulis kode kalian di bawah ini
+import { useContext, useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import NewPage from "./pages/NewPage";
+import { PageContext } from "./components/Providers";
 
 function App() {
-  return <main>Hello World!</main>;
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [searchText, setSearchText] = useState("");
+  const [products, setProducts] = useState(null);
+  const page = useContext(PageContext);
+
+  useEffect(() => {
+    let ignored = false;
+
+    async function getItems() {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/items`
+      );
+      const data = await response.json();
+      if (!ignored) {
+        // console.log({ data });
+        setProducts(data);
+      }
+    }
+
+    getItems();
+    return () => {
+      ignored = true;
+    };
+  }, []);
+
+  if (products === null) {
+    return <div>Loading...</div>;
+  }
+
+  const filteredProducts = products
+    .filter((product) => {
+      if (categoryFilter === "All") return true;
+      return product.category === categoryFilter;
+    })
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchText.trim().toLowerCase())
+    );
+
+  return (
+    <main>
+      <Navbar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        categoryFilter={categoryFilter}
+        setCategoryFilter={setCategoryFilter}
+      />
+      {page === "Home" && (
+        <HomePage products={filteredProducts} categoryFilter={categoryFilter} />
+      )}
+      {page === "New" && <NewPage setProducts={setProducts} />}
+    </main>
+  );
 }
 
 export default App;

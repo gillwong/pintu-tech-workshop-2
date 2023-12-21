@@ -69,6 +69,24 @@
       "price": 99,
       "image": "images/img10.png",
       "category": "Clothes"
+    },
+    {
+      "name": "T-Shirt 1",
+      "price": "25.99",
+      "category": "Clothes",
+      "id": 11
+    },
+    {
+      "name": "T-Shirt 2",
+      "price": "25.99",
+      "category": "Clothes",
+      "id": 12
+    },
+    {
+      "name": "HP 10",
+      "price": "1999.99",
+      "category": "Electronics",
+      "id": 13
     }
   ]
 }
