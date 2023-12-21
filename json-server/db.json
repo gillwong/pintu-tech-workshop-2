@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Handphone 1",
+      "price": 399,
+      "image": "images/img1.png",
+      "category": "Electronics"
+    },
+    {
+      "id": 2,
+      "name": "Handphone 2",
+      "price": 459,
+      "image": "images/img2.png",
+      "category": "Electronics"
+    },
+    {
+      "id": 3,
+      "name": "Handphone 3",
+      "price": 249,
+      "image": "images/img3.png",
+      "category": "Electronics"
+    },
+    {
+      "id": 4,
+      "name": "Handphone 4",
+      "price": 379,
+      "image": "images/img4.png",
+      "category": "Electronics"
+    },
+    {
+      "id": 5,
+      "name": "Handphone 5",
+      "price": 799,
+      "image": "images/img5.png",
+      "category": "Electronics"
+    },
+    {
+      "id": 6,
+      "name": "Sepatu 1",
+      "price": 99,
+      "image": "images/img6.png",
+      "category": "Clothes"
+    },
+    {
+      "id": 7,
+      "name": "Sepatu 2",
+      "price": 89,
+      "image": "images/img7.png",
+      "category": "Clothes"
+    },
+    {
+      "id": 8,
+      "name": "Sepatu 3",
+      "price": 129,
+      "image": "images/img8.png",
+      "category": "Clothes"
+    },
+    {
+      "id": 9,
+      "name": "Sepatu 4",
+      "price": 79,
+      "image": "images/img9.png",
+      "category": "Clothes"
+    },
+    {
+      "id": 10,
+      "name": "Sepatu 5",
+      "price": 99,
+      "image": "images/img10.png",
+      "category": "Clothes"
+    }
+  ]
+}
